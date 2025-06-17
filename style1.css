@@ -1,0 +1,18 @@
+# Tambahkan background
+def get_base64(file_path):
+    with open(file_path, "rb") as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+background_base64 = get_base64("background.jpg")
+
+st.markdown(f"""
+    <style>
+    body {{
+        background-image: url("data:image/jpg;base64,{background_base64}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }}
+    </style>
+""", unsafe_allow_html=True)
